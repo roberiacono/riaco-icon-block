@@ -1,6 +1,6 @@
 {
-	"name": "riaco.icon-block",
-	"version": "1.0.0",
+	"name": "riaco-icon-block",
+	"version": "1.0.1",
 	"description": "WordPress Icons Block to add icons to your content with full control over icon selection, size, color, alignment, and background gradients.",
 	"author": "Roberto Iacono",
 	"license": "GPL-2.0-or-later",

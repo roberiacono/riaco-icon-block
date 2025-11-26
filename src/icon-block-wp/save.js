@@ -15,6 +15,9 @@ export default function save({ attributes }) {
 		borderWidth, // default no border
 		borderColor, // default no border color
 		borderStyle, // default border style
+		iconLink,
+		iconLinkOpenInNewTab,
+		iconNofollow,
 		padding
 	} = attributes;
 
@@ -24,15 +27,12 @@ export default function save({ attributes }) {
 		},
 	});
 
-	const iconJSX = getIcon(icon);
-
 	const iconColorVal = iconColor || "var(--wp--preset--color--foreground)";
 
-	return (
-		<div {...blockProps}>
-			<div
-				className="icon-wrapper"
-				style={{
+	const iconMarkup = (
+		<div
+			class="icon-wrapper"
+			style={{
 					background: iconBackgroundColor || iconBackgroundColorGradient,
 					width: size,
 					height: size,
@@ -43,17 +43,37 @@ export default function save({ attributes }) {
 					borderStyle: borderStyle,
 					borderColor: borderColor,
 					padding: padding+'px' ?? '',
+					
 				}}
-			>
-				{icon && iconJSX && (
-					<Icon
-						icon={iconJSX}
-						{...(!iconJSX.props?.stroke ? { fill: iconColorVal } : {})}
-						color={iconColorVal}
-						size={size}
-					/>
-				)}
-			</div>
+		>
+			<Icon
+				icon={getIcon(attributes.icon)}
+				color={attributes.iconColor}
+				size={attributes.size}
+			/>
+		</div>
+	);
+
+	return (
+		<div {...blockProps}>
+			{iconLink ? (
+				<a
+					href={iconLink}
+					{...(iconLinkOpenInNewTab && { target: "_blank" })}
+					{...((iconLinkOpenInNewTab || iconNofollow) && {
+        rel: [
+            iconNofollow ? "nofollow" : "",
+            iconLinkOpenInNewTab ? "noopener noreferrer" : ""
+        ]
+            .join(" ")
+            .trim()
+    })}
+				>
+					{iconMarkup}
+				</a>
+			) : (
+				iconMarkup
+			)}
 		</div>
 	);
 }

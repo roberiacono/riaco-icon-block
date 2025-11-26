@@ -5,7 +5,7 @@ return array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
 		'name' => 'riaco-icon-block/riaco-icon-block',
-		'version' => '1.0.0',
+		'version' => '1.0.1',
 		'title' => 'Icons',
 		'category' => 'widgets',
 		'icon' => 'lightbulb',
@@ -62,6 +62,18 @@ return array(
 			'margin' => array(
 				'type' => 'number',
 				'default' => 0
+			),
+			'iconLink' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'iconLinkOpenInNewTab' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'iconNofollow' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'textdomain' => 'riaco-icon-block',

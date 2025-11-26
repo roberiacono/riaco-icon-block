@@ -1,8 +1,9 @@
 <?php
 /**
  * Plugin Name:       RIACO Icon Block
+ * Plugin URI: 		  https://github.com/roberiacono/riaco-icon-block
  * Description:       WordPress Icons Block to add SVG icons to your content with full control over icon selection, size, color, alignment, and background gradients.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Roberto Iacono

@@ -17,12 +17,14 @@ import {
 	__experimentalPanelColorGradientSettings as PanelColorGradientSettings,
 	BlockControls,
 	AlignmentToolbar,
+	LinkControl
 } from "@wordpress/block-editor";
 
 import {
 	PanelBody,
 	RangeControl,
 	BorderBoxControl,
+	ToolbarButton, Popover 
 } from "@wordpress/components";
 
 /**
@@ -35,9 +37,11 @@ import "./editor.scss";
 
 import IconPicker from "./components/IconPicker";
 
-import { Icon } from "@wordpress/icons";
+import { Icon , link } from "@wordpress/icons";
 
 import { getIcon } from "./includes/get-icon.js";
+
+import { useState } from "@wordpress/element";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -62,6 +66,8 @@ export default function Edit({ attributes, setAttributes }) {
 		padding,
 	} = attributes;
 
+	const [isLinkPickerVisible, setIsLinkPickerVisible] = useState(false);
+
 	const blockProps = useBlockProps({
 		style: {
 			textAlign: iconAlign,
@@ -72,8 +78,6 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const iconColorVal = iconColor || "var(--wp--preset--color--foreground)";
 
-	console.log('attributes', attributes);
-
 	return (
 		<>
 			<BlockControls>
@@ -82,6 +86,40 @@ export default function Edit({ attributes, setAttributes }) {
 					onChange={(newAlign) => setAttributes({ iconAlign: newAlign })}
 					label={__("Icon Alignment", "riaco-icon-block")}
 				/>
+				<ToolbarButton
+		icon={link}
+		label={__("Set Link", "riaco-icon-block")}
+		onClick={() => setIsLinkPickerVisible(true)}
+	/>
+
+	{isLinkPickerVisible && (
+		<Popover onClose={() => setIsLinkPickerVisible(false)}>
+			<LinkControl
+				value={{
+					url: attributes.iconLink,
+					opensInNewTab: attributes?.iconLinkOpenInNewTab,
+					nofollow: attributes?.iconNofollow
+				}}
+				onChange={(newValue) => {
+					setAttributes({
+						iconLink: newValue.url,
+						iconLinkOpenInNewTab: !!newValue.opensInNewTab,
+						iconNofollow: newValue.nofollow ,
+					});
+				}}
+				settings={[
+					{
+						id: "opensInNewTab",
+						title: __("Open in new tab", "riaco-icon-block"),
+					},
+					{
+						id: "nofollow",
+						title: __("Mark as nofollow", "riaco-icon-block"),
+					},
+				]}
+			/>
+		</Popover>
+	)}
 			</BlockControls>
 
 			<InspectorControls>
