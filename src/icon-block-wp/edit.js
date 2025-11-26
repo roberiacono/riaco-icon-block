@@ -101,10 +101,18 @@ export default function Edit({ attributes, setAttributes }) {
 					nofollow: attributes?.iconNofollow
 				}}
 				onChange={(newValue) => {
+					
 					setAttributes({
 						iconLink: newValue.url,
 						iconLinkOpenInNewTab: !!newValue.opensInNewTab,
 						iconNofollow: newValue.nofollow ,
+					});
+				}}
+				onRemove={() => {
+					setAttributes({
+						iconLink: undefined, // or ""
+						iconLinkOpenInNewTab: false,
+						iconNofollow: false,
 					});
 				}}
 				settings={[

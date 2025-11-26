@@ -21,6 +21,8 @@ Add customizable icons to your content with full control over icon selection, si
 * Full color support for icon
 * Full color & gradient support for background
 * Alignment controls (left, center, right)
+* Icon padding
+* Icons can be clickable links, with full Gutenberg integration
 * Uses the modern, lightweight Lucide icon library
 * Fully integrated into the WordPress Styles panel
 * Ideal for enhancing visual communication in content, highlighting features, or adding decorative elements.
@@ -36,6 +38,11 @@ Add customizable icons to your content with full control over icon selection, si
 
 Open the block settings panel in the right sidebar, and click on the “Icon Picker.” Use the search box to quickly find and select any icon from the Lucide library or WordPress Social icons.
 
+== Screenshots ==
+
+1. Icon block in the block editor.
+2. Icon with background color, padding and border.
+3. Icons in frontend.
 
 == Credits ==
 
