@@ -15,9 +15,10 @@
 		"start": "wp-scripts start --blocks-manifest"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.18.0"
+		"@wordpress/scripts": "^30.27.0"
 	},
 	"dependencies": {
+		"@wordpress/icons": "^11.2.0",
 		"html-react-parser": "^5.2.7",
 		"lucide-react": "^0.548.0"
 	}

@@ -1,1 +1,1 @@
-{"version":3,"file":"icon-block-wp/style-index.css","mappings":";;;AAAC;EACA;AACD,C","sources":["webpack://riaco.icon-block/./src/icon-block-wp/style.scss"],"sourcesContent":[" .full-width-control-wrapper {\r\n\tgrid-column: 1 / -1;\r\n}"],"names":[],"sourceRoot":""}
+{"version":3,"file":"icon-block-wp/style-index.css","mappings":";;;AAAC;EACA;AACD,C","sources":["webpack://riaco.icon-block/./src/icon-block-wp/style.scss"],"sourcesContent":[" .full-width-control-wrapper {\n\tgrid-column: 1 / -1;\n}"],"names":[],"sourceRoot":""}

@@ -55,6 +55,10 @@ return array(
 				'type' => 'string',
 				'default' => 'solid'
 			),
+			'padding' => array(
+				'type' => 'number',
+				'default' => 0
+			),
 			'margin' => array(
 				'type' => 'number',
 				'default' => 0

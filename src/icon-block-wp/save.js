@@ -12,9 +12,10 @@ export default function save({ attributes }) {
 		iconBackgroundColorGradient = null,
 		iconAlign,
 		borderRadius = 50, // default circle
-		borderWidth = "0px", // default no border
-		borderColor = null, // default no border color
-		borderStyle = "none", // default border style
+		borderWidth, // default no border
+		borderColor, // default no border color
+		borderStyle, // default border style
+		padding
 	} = attributes;
 
 	const blockProps = useBlockProps.save({
@@ -41,6 +42,7 @@ export default function save({ attributes }) {
 					borderWidth: borderWidth,
 					borderStyle: borderStyle,
 					borderColor: borderColor,
+					padding: padding+'px' ?? '',
 				}}
 			>
 				{icon && iconJSX && (

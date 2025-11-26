@@ -50,6 +50,10 @@
 			"type": "string", 
 			"default": "solid" 
 		},
+		"padding": {
+			"type": "number",
+			"default": 0
+		},
 		"margin": {
 			"type": "number",
 			"default": 0

@@ -56,9 +56,10 @@ export default function Edit({ attributes, setAttributes }) {
 		iconBackgroundColorGradient = null,
 		iconAlign,
 		borderRadius = 0, // default circle
-		borderWidth = 0, // default no border
-		borderColor = null, // default no border color
-		borderStyle = "none", // default border style
+		borderWidth , // default no border
+		borderColor, // default no border color
+		borderStyle, // default border style
+		padding,
 	} = attributes;
 
 	const blockProps = useBlockProps({
@@ -70,6 +71,8 @@ export default function Edit({ attributes, setAttributes }) {
 	const iconJSX = getIcon(icon);
 
 	const iconColorVal = iconColor || "var(--wp--preset--color--foreground)";
+
+	console.log('attributes', attributes);
 
 	return (
 		<>
@@ -130,6 +133,18 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 
 			<InspectorControls group="styles">
+				<PanelBody title={__("Padding", "riaco-icon-block")}>
+					<RangeControl
+						label={__("Padding", "riaco-icon-block")}
+						value={padding}
+						onChange={(value) => setAttributes({ padding: value })}
+						min={0}
+						max={256}
+					/>
+				</PanelBody>
+			</InspectorControls>
+
+			<InspectorControls group="styles">
 				<PanelBody title={__("Border", "riaco-icon-block")}>
 					<div className="full-width-control-wrapper">
 						<BorderBoxControl
@@ -137,13 +152,14 @@ export default function Edit({ attributes, setAttributes }) {
 							value={{
 								width: borderWidth,
 								color: borderColor,
-								style: borderStyle,
+								style: 'solid',
 							}}
+							enableStyle={false}
 							onChange={(newValues) => {
 								setAttributes({
-									borderWidth: newValues.width,
-									borderColor: newValues.color,
-									borderStyle: newValues.style,
+									borderWidth: newValues.width ?? '',
+									borderColor: newValues.color ?? '',
+									borderStyle: newValues.style ?? '',
 								});
 							}}
 							__next40pxDefaultSize={true}
@@ -173,6 +189,7 @@ export default function Edit({ attributes, setAttributes }) {
 						borderWidth: borderWidth,
 						borderStyle: borderStyle,
 						borderColor: borderColor,
+						padding: padding+'px' ?? '',
 					}}
 				>
 					{icon && iconJSX && (
