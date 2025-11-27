@@ -183,7 +183,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<RangeControl
 						label={__("Padding", "riaco-icon-block")}
 						value={padding}
-						onChange={(value) => setAttributes({ padding: value })}
+						onChange={(value) => setAttributes({ padding: value ?? 0})}
 						min={0}
 						max={256}
 					/>
@@ -235,7 +235,7 @@ export default function Edit({ attributes, setAttributes }) {
 						borderWidth: borderWidth,
 						borderStyle: borderStyle,
 						borderColor: borderColor,
-						padding: padding+'px' ?? '',
+						padding: padding ? padding +'px' : '0px'
 					}}
 				>
 					{icon && iconJSX && (

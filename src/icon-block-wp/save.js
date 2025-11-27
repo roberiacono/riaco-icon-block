@@ -29,6 +29,8 @@ export default function save({ attributes }) {
 
 	const iconColorVal = iconColor || "var(--wp--preset--color--foreground)";
 
+	const iconJSX = getIcon(icon);
+
 	const iconMarkup = (
 		<div
 			class="icon-wrapper"
@@ -42,14 +44,15 @@ export default function save({ attributes }) {
 					borderWidth: borderWidth,
 					borderStyle: borderStyle,
 					borderColor: borderColor,
-					padding: padding+'px' ?? '',
+					padding: padding ? padding +'px' : '0px'
 					
 				}}
 		>
 			<Icon
-				icon={getIcon(attributes.icon)}
-				color={attributes.iconColor}
-				size={attributes.size}
+				icon={iconJSX}
+				{...(!iconJSX.props?.stroke ? { fill: iconColorVal } : {})}
+				color={iconColorVal}
+				size={size}
 			/>
 		</div>
 	);
